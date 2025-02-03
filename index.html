@@ -9,24 +9,38 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <!-- Define o titulo do site -->
-        <title>Peixinho</title>
-
-        <style>
-            body {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                height: 100vh;
-                margin: 0;
-            }
-        </style>
+        <title>Davi Duarte Rodrigues</title>
         
         <!-- Importa o script do framework phaser -->
         <script src="phaser.js"></script>
+
+        <script>
+            var resposta = "Sim, já programo em Java a mais de 6 anos e tenho conhecimento em outras linguagens de programação como Python, JavaScript, TypeScript, SQL, entre outras.";
+            console.log(resposta);
+        </script>
     </head>
 
 
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
     <body>
+        <!-- Adiciona um vaso de planta fora do canvas do script -->
+        <div style="position: absolute; top: 120px; left: 35px; text-align: center;">
+            <img src="assets/planta.png" alt="Vaso de Planta" style="width: 50%; display: block; margin: 0 auto;" onclick="plantaClick()">
+            <p style="word-wrap: break-word; width: 200px; margin: 0 auto;">Apenas um vaso de planta comum, clique no vaso para descobrir algo mágico</p>
+        </div>
+        <script>
+            function plantaClick() {
+                alert("Eu não faço nada de especial, mas se você clicar no peixe, algo mágico acontecerá!");
+            }
+        </script>
         <!-- Importa o script do jogo para o corpo do site -->
         <script src="game.js"></script>
     </body>
