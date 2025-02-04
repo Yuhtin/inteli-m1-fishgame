@@ -1,7 +1,7 @@
 var debug = false; // Se o debug estiver ativo, irá desenhar um circulo vermelho com o raio configurado em maxDeltaRadius
-var maxDeltaRadius = 75; // Raio de ação do mouse
+var maxDeltaRadius = 100; // Raio de ação do mouse
 var moveAround = false; // Habilita o movimento aleatório dos peixes
-var gameModifications = true; // Habilita as modificações no jogo
+var gameModifications = false; // Habilita as modificações no jogo
 
 var config = {
     type: Phaser.AUTO,
@@ -16,11 +16,13 @@ var config = {
 }
 
 var game = new Phaser.Game(config);
+var tubarao;
 var peixes = [];
 
 function preload() {
     this.load.image('mar', 'assets/bg_azul-escuro.png');
     this.load.image('logo', 'assets/logo-inteli_branco.png');
+    this.load.image('tubarao', 'assets/peixes/tubarao.png');
 
     this.load.image('peixe0', 'assets/peixes/baiacu_lado.png');
     this.load.image('peixe1', 'assets/peixes/baiacu.png');
@@ -35,17 +37,16 @@ function create() {
 
     if (gameModifications) {
         for (var i = 0; i < 25; i++) {
-            // put the image in the scene in a random position
+            // Colocar o peixe dentro da tela em um lugar aleatório
             var x = Phaser.Math.Between(0, 960);
             var y = Phaser.Math.Between(0, 540);
 
             var number = Phaser.Math.Between(0, maxRange);
             peixes.push(this.add.image(x, y, 'peixe' + number).setScale(0.5).setOrigin(0.5, 0.5).setFlip(true, false));
         }
-    } else {
-        peixes.push(this.add.image(400, 300, 'peixe0').setOrigin(0.5, 0.5).setFlip(true, false));
     }
 
+    tubarao = this.add.image(400, 300, 'tubarao').setScale(0.6);
     this.add.image(400, 525, 'logo').setScale(0.7);
 }
 
@@ -53,12 +54,9 @@ function update() {
     var currentX = this.input.x;
     var currentY = this.input.y;
 
-    if (!gameModifications) {
-        peixes[0].x = currentX;
-        peixes[0].y = currentY;
-
-        return;
-    }
+    // Definição da posição do tubarão de acordo com a posição do mouse
+    tubarao.x = currentX;
+    tubarao.y = currentY;
 
     for (var i = 0; i < peixes.length; i++) {
         var deltaX = currentX - peixes[i].x;
