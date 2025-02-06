@@ -1,7 +1,7 @@
 var debug = false; // Se o debug estiver ativo, irá desenhar um circulo vermelho com o raio configurado em maxDeltaRadius
 var maxDeltaRadius = 100; // Raio de ação do mouse
 var moveAround = false; // Habilita o movimento aleatório dos peixes
-var gameModifications = false; // Habilita as modificações no jogo
+var gameModifications = true; // Habilita as modificações no jogo
 
 var config = {
     type: Phaser.AUTO,
